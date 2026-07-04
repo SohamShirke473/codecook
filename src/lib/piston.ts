@@ -49,7 +49,9 @@ const url = new URL(env.PISTON_API_URL);
 const BASE = `${url.protocol}//${url.host}`;
 const headers: Record<string, string> = { "Content-Type": "application/json" };
 
-if (url.username) {
+// In dev, the Piston URL may include user:pass for a remote/protected instance.
+// In prod, Piston runs on the same VPS so no credentials are needed.
+if (env.NODE_ENV !== "production" && url.username) {
   const decoded = `${decodeURIComponent(url.username)}:${decodeURIComponent(url.password)}`;
   headers["Authorization"] = `Basic ${btoa(decoded)}`;
 }
