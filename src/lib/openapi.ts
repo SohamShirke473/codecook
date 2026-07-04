@@ -5,7 +5,10 @@ export const openApiSpec = {
     version: "0.1.0",
     description: "LeetCode-style backend with code execution via Piston, BullMQ queues, Redis leaderboard, and PostgreSQL + Drizzle ORM.",
   },
-  servers: [{ url: "http://localhost:8080", description: "Development" }],
+  servers: [
+    { url: "https://codecookapi.shirkesoham.tech", description: "Production" },
+    { url: "http://localhost:8080", description: "Development" },
+  ],
   paths: {
     "/health": { get: { summary: "Health check", tags: ["Health"], responses: { "200": { description: "All services healthy" }, "503": { description: "Degraded" } } } },
 
