@@ -8,10 +8,10 @@ const envSchema = z.object({
   PISTON_API_URL: z.string().default(
     process.env.NODE_ENV === "production"
       ? "http://localhost:2000"          // same VPS — no credentials needed
-      : "https://piston.shirkesoham.tech" // dev — plain URL, add user:pass if your instance needs it
+      : "https://piston.shirkesoham.tech"
   ),
   JWT_SECRET: z.string().default("dev-secret-change-in-production"),
-  CORS_ORIGIN: z.string().default("http://localhost:5173"),
+  CORS_ORIGIN: z.string().default("*"),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 });
 

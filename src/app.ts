@@ -14,7 +14,10 @@ import { openApiSpec } from "./lib/openapi.js";
 
 const app = express();
 
-app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }));
+app.use(cors({
+  origin: env.CORS_ORIGIN === "*" ? "*" : env.CORS_ORIGIN,
+  credentials: env.CORS_ORIGIN !== "*",
+}));
 app.use(express.json());
 app.use(cookieParser());
 
