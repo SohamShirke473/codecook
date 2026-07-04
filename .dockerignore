@@ -1,0 +1,10 @@
+node_modules
+.env
+.env.*
+!.env.example
+drizzle
+.git
+.gitignore
+README.md
+docker-compose.yml
+nixpacks.toml
