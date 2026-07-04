@@ -46,7 +46,7 @@ export type PistonExecuteResponse = z.infer<typeof pistonExecuteResponseSchema>;
 export type PistonRuntime = z.infer<typeof pistonRuntimeSchema>;
 
 const url = new URL(env.PISTON_API_URL);
-const BASE = `${url.protocol}//${url.host}`;
+const BASE = url.origin; // protocol + host + port, stripped of any credentials
 const headers: Record<string, string> = { "Content-Type": "application/json" };
 
 // In dev, the Piston URL may include user:pass for a remote/protected instance.
